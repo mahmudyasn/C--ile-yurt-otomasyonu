@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="OgrYurt" Class="YurtDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=OgrYurt;Persist Security Info=True;User ID=YurtKullanici" SettingsObjectName="VeriSorgulari.Properties.Settings" SettingsPropertyName="OgrYurtConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[Log]" Member="Logs">
+    <Type Name="Log">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LogIcerik" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PersonelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IslemTarihi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Personel_Log" Member="Personel" ThisKey="PersonelID" OtherKey="Id" Type="Personel" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Veli" Member="Velis">
+    <Type Name="Veli">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ad" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Soyad" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="YakinlikDerecesi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Telefon" Type="System.String" DbType="NVarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="OgrenciID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Ogrenci_Veli" Member="Ogrenci" ThisKey="OgrenciID" OtherKey="Id" Type="Ogrenci" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Oda" Member="Odas">
+    <Type Name="Oda">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OdaNo" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="KisiSayisi" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Durum" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Oda_Ogrenci" Member="Ogrencis" ThisKey="Id" OtherKey="OdaID" Type="Ogrenci" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Odeme" Member="Odemes">
+    <Type Name="Odeme">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OdemeTutari" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="IslemTarihi" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PersonelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UcretID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Personel_Odeme" Member="Personel" ThisKey="PersonelID" OtherKey="Id" Type="Personel" IsForeignKey="true" />
+      <Association Name="Ucret_Odeme" Member="Ucret" ThisKey="UcretID" OtherKey="Id" Type="Ucret" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ogrenci" Member="Ogrencis">
+    <Type Name="Ogrenci">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OdaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Ad" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Soyad" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="TC" Type="System.String" DbType="NChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefon" Type="System.String" DbType="NChar(11)" CanBeNull="true" />
+      <Column Name="Resim" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="KayitTarihi" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OgrenciNo" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="OgrSinif" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Durum" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Ogrenci_Veli" Member="Velis" ThisKey="Id" OtherKey="OgrenciID" Type="Veli" />
+      <Association Name="Ogrenci_Ucret" Member="Ucrets" ThisKey="Id" OtherKey="OgrenciID" Type="Ucret" />
+      <Association Name="Oda_Ogrenci" Member="Oda" ThisKey="OdaID" OtherKey="Id" Type="Oda" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Personel" Member="Personels">
+    <Type Name="Personel">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ad" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Soyad" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefon" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="KullaniciAdi" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Sifre" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="KayitTarihi" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Durum" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Personel_Log" Member="Logs" ThisKey="Id" OtherKey="PersonelID" Type="Log" />
+      <Association Name="Personel_Odeme" Member="Odemes" ThisKey="Id" OtherKey="PersonelID" Type="Odeme" />
+      <Association Name="Personel_Ucret" Member="Ucrets" ThisKey="Id" OtherKey="PersonelID" Type="Ucret" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ucret" Member="Ucrets">
+    <Type Name="Ucret">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OgrenciID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="KayitBaslangicTarihi" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TaksitSayisi" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="KayitBitisTarihi" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PersonelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Yil" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ToplamUcret" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="Ucret_Odeme" Member="Odemes" ThisKey="Id" OtherKey="UcretID" Type="Odeme" />
+      <Association Name="Ogrenci_Ucret" Member="Ogrenci" ThisKey="OgrenciID" OtherKey="Id" Type="Ogrenci" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Personel_Ucret" Member="Personel" ThisKey="PersonelID" OtherKey="Id" Type="Personel" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Yurt.master.cs" Inherits="OgrYurt.Yurt" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <h1><a><span>Yurt Otomasyonu</span></a></h1>
+        <div style="height: 100%;">
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <asp:Label runat="server" ID="lblKullaniciAd"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td style="width: 20%" valign="top">
+                        <ul>
+                            <li><a href="/Anasayfa.aspx" class="active">Anasayfa</a></li>
+                            <li class="logout"><a href="Giris.aspx">Çıkış</a></li>
+                        </ul>
+
+                        <div>
+                            <ul>
+                                <li>
+                                    <asp:LinkButton ID="lkOda" runat="server" OnClick="lkOda_Click">Oda Yönetimi</asp:LinkButton></li>
+
+                                <li>
+                                    <asp:LinkButton ID="lkOgrenci" runat="server" OnClick="lkOgrenci_Click">Öğrenci Yönetimi</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton ID="lkOdeme" runat="server" OnClick="lkOdeme_Click">Ödeme Yönetimi</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton ID="lkUcret" runat="server" OnClick="lkUcret_Click">Ücret Yönetimi</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton ID="lkVeli" runat="server" OnClick="lkVeli_Click">Veli Yönetimi</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton ID="lkGelir" runat="server" OnClick="lkGelir_Click">Gelir Raporu</asp:LinkButton></li>
+                                <li runat="server" id="kyonetimi">
+                                    <asp:LinkButton ID="lkPersonel" runat="server" OnClick="lkPersonel_Click">Personel Yönetimi</asp:LinkButton></li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td style="width: 80%">
+
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <div>
+                            Ankara Üniversitesi
+                            <br />
+                            Final Ödevi
+                            <br />
+                            M. Yasin ÖZCAN
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </form>
+</body>
+</html>

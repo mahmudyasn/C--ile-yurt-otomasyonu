@@ -1,0 +1,7 @@
+D:\AnkaraUniversitesi\Sinif2\Programlama2\Final\OgrYurt[2786]\OgrYurt\VeriSorgulari\bin\Debug\VeriSorgulari.dll.config
+D:\AnkaraUniversitesi\Sinif2\Programlama2\Final\OgrYurt[2786]\OgrYurt\VeriSorgulari\bin\Debug\VeriSorgulari.dll
+D:\AnkaraUniversitesi\Sinif2\Programlama2\Final\OgrYurt[2786]\OgrYurt\VeriSorgulari\bin\Debug\VeriSorgulari.pdb
+D:\AnkaraUniversitesi\Sinif2\Programlama2\Final\OgrYurt[2786]\OgrYurt\VeriSorgulari\obj\Debug\VeriSorgulari.csproj.AssemblyReference.cache
+D:\AnkaraUniversitesi\Sinif2\Programlama2\Final\OgrYurt[2786]\OgrYurt\VeriSorgulari\obj\Debug\VeriSorgulari.csproj.CoreCompileInputs.cache
+D:\AnkaraUniversitesi\Sinif2\Programlama2\Final\OgrYurt[2786]\OgrYurt\VeriSorgulari\obj\Debug\VeriSorgulari.dll
+D:\AnkaraUniversitesi\Sinif2\Programlama2\Final\OgrYurt[2786]\OgrYurt\VeriSorgulari\obj\Debug\VeriSorgulari.pdb
